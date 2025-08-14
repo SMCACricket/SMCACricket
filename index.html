@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMCA Winter Cricket Hub</title>
+    <!-- Tailwind CSS for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* A dark GitHub-like background */
+            background-image: linear-gradient(to bottom right, #1a202c, #0d1117);
+        }
+        /* Custom styles for the logo in the background */
+        .watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('SMCA_logo.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 30%;
+            opacity: 0.08; /* Slightly more subtle opacity */
+            z-index: -1;
+            pointer-events: none;
+        }
+        .card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        .coming-soon-card {
+            background-color: rgba(100, 100, 100, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: not-allowed;
+        }
+        .coming-soon-card:hover {
+            transform: none; /* Disable the hover effect for this card */
+            background-color: rgba(100, 100, 100, 0.1);
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Watermark for the logo in the background -->
+    <div class="watermark"></div>
+
+    <main class="w-full max-w-5xl mx-auto space-y-12">
+        <!-- Main title and logo section -->
+        <header class="text-center space-y-4">
+            <!-- You can replace SMCA_logo.jpg with a more high-res or optimized version -->
+            <img src="SMCA_logo.jpg" alt="SMCA Logo" class="mx-auto h-24 w-24 rounded-full shadow-lg">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
+                SMCA Winter Cricket Hub
+            </h1>
+            <p class="mt-4 text-xl text-gray-300 max-w-2xl mx-auto">
+                Your central portal for all things SMCA Cricket, from player awards to match results.
+            </p>
+        </header>
+
+        <!-- Container for the three cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
+
+            <!-- Leaderboard Card -->
+            <a href="https://smcacricket.github.io/Awards/" class="block p-8 rounded-2xl shadow-lg hover:shadow-2xl card cursor-pointer">
+                <div class="flex flex-col items-center text-center space-y-4">
+                    <!-- Icon for Awards -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-yellow-300 transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.53 12 11.53 20.73 6.53"></polyline>
+                        <path d="M12 22.07V12"></path>
+                    </svg>
+                    <h2 class="text-3xl font-extrabold text-white transition-colors duration-300">
+                        Leaderboard
+                    </h2>
+                    <p class="text-md text-gray-400">
+                        See the player of the season submitted data, Hatricks, 5 wicket hauls and centuries for 2025 season.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Player of the Season Submission Points Card -->
+            <a href="https://smcacricket.github.io/Cricket/" class="block p-8 rounded-2xl shadow-lg hover:shadow-2xl card cursor-pointer">
+                <div class="flex flex-col items-center text-center space-y-4">
+                    <!-- Icon for Cricket -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-blue-400 transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 9a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H23a.5.5 0 0 0 .5-.5V9.5a.5.5 0 0 0-.5-.5h-1.5z"></path>
+                        <path d="M17 10h-2.5a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5H17a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5z"></path>
+                        <path d="M15.5 14.5a.5.5 0 0 1-.5.5H12a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v10z"></path>
+                        <path d="M11 18.5a.5.5 0 0 1-.5.5H8a.5.5 0 0 1-.5-.5v-14a.5.5 0 0 1 .5-.5h2.5a.5.5 0 0 1 .5.5v14z"></path>
+                        <path d="M5.5 22.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-18a.5.5 0 0 1 .5-.5h3.5a.5.5 0 0 1 .5.5v18z"></path>
+                        <path d="M12 2v20"></path>
+                    </svg>
+                    <h2 class="text-3xl font-extrabold text-white transition-colors duration-300">
+                        Player of the season points Submission
+                    </h2>
+                    <p class="text-md text-gray-400">
+                        Submit Player of the season points.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Awards Night - Coming Soon Card -->
+            <div class="block p-8 rounded-2xl shadow-lg coming-soon-card">
+                <div class="flex flex-col items-center text-center space-y-4">
+                    <!-- Icon for Awards Night -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 2a2 2 0 0 0-2 2v.5l-2.5 3h13L16 4.5V4a2 2 0 0 0-2-2H10z"></path>
+                        <path d="M22 17H2v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2z"></path>
+                        <path d="M12 11h.01"></path>
+                        <path d="M12 15h.01"></path>
+                        <path d="M8 11h.01"></path>
+                        <path d="M8 15h.01"></path>
+                        <path d="M16 11h.01"></path>
+                        <path d="M16 15h.01"></path>
+                    </svg>
+                    <h2 class="text-3xl font-extrabold text-gray-500">
+                        Awards Night
+                    </h2>
+                    <p class="text-md text-gray-500">
+                        Details about the annual SMCA Awards Night are coming soon!
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
