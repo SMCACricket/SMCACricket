@@ -20,6 +20,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            /* Note: SMCA_logo.jpg URL is used here - ensure it's accessible */
             background-image: url('SMCA_logo.jpg');
             background-repeat: no-repeat;
             background-position: center center;
@@ -47,14 +48,23 @@
             transform: none; /* Disable the hover effect for this card */
             background-color: rgba(100, 100, 100, 0.1);
         }
+        /* Modal backdrop styles */
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-active {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
-<body class="text-white min-h-screen flex flex-col items-center justify-center p-6">
+<body class="text-white min-h-screen flex flex-col p-6 items-center">
 
     <!-- Watermark for the logo in the background -->
     <div class="watermark"></div>
 
-    <main class="w-full max-w-5xl mx-auto space-y-12">
+    <!-- Main content container that takes up available space -->
+    <main class="w-full max-w-5xl mx-auto space-y-12 flex-grow">
         <!-- Main title and logo section -->
         <header class="text-center space-y-4">
             <!-- You can replace SMCA_logo.jpg with a more high-res or optimized version -->
@@ -63,7 +73,7 @@
                 SMCA Summer Cricket 2025/26
             </h1>
             <p class="mt-4 text-xl text-gray-300 max-w-2xl mx-auto">
-                
+                The central hub for player statistics, submissions, and season updates.
             </p>
         </header>
 
@@ -131,9 +141,184 @@
                     </p>
                 </div>
             </div>
+        </div>
+
+        <!-- Feedback and Support Section -->
+        <section class="mt-16 pt-8 border-t border-gray-700/50 text-center space-y-4">
+            <h3 class="text-2xl font-bold text-gray-300">Support the Hub</h3>
+            <p class="text-gray-400 max-w-xl mx-auto">Found a bug, have a suggestion, or want to fuel the developer's late-night coding sessions?</p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
+                
+                <!-- Feedback Button/Link -->
+                <a href="mailto:raviadabala66@gmail.com?subject=Feedback%20on%20SMCA%20Cricket%20Hub" 
+                   class="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold rounded-full bg-blue-600 hover:bg-blue-700 transition duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                    <!-- Mail Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                        <path d="M3 7l9 6 9-6"></path>
+                    </svg>
+                    Send Feedback
+                </a>
+
+                <!-- Buy Developer a Coffee Button/Link (Triggers the Modal) -->
+                <button onclick="showPaymentModal()"
+                   class="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold rounded-full text-black bg-yellow-400 hover:bg-yellow-500 transition duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                    <!-- Coffee Cup Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 7V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v3H4a2 2 0 0 0-2 2v6a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4v-6a2 2 0 0 0-2-2h-2zM8 4h8v3H8V4z"></path>
+                        <path d="M15 16H9a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1z"></path>
+                    </svg>
+                    Buy Ravi a Coffee
+                </button>
+            </div>
+            <!-- REMINDER: Replace the 'mailto' email with your actual email! -->
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="w-full max-w-5xl mx-auto mt-12 py-6 border-t border-gray-700/50 text-center text-gray-500 text-sm">
+        <p>
+            Powered by the SMCA.
+            <span class="text-gray-400 font-semibold">| Developed by Ravi Adabala</span>.
+        </p>
+        <p class="mt-1">
+            &copy; 2025 SMCA Cricket Hub. All rights reserved.
+        </p>
+    </footer>
+
+    <!-- PAYMENT MODAL -->
+    <div id="paymentModal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 opacity-0 invisible" onclick="hidePaymentModal()">
+        <div class="bg-[#1a202c] rounded-xl shadow-2xl p-6 md:p-8 w-11/12 max-w-lg transform transition-all duration-300 scale-95" onclick="event.stopPropagation()">
+            
+            <div class="flex justify-between items-center border-b border-gray-700 pb-3 mb-4">
+                <h2 class="text-3xl font-bold text-yellow-400 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 7V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v3H4a2 2 0 0 0-2 2v6a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4v-6a2 2 0 0 0-2-2h-2zM8 4h8v3H8V4z"></path>
+                        <path d="M15 16H9a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1z"></path>
+                    </svg>
+                    Fuel the Development
+                </h2>
+                <button onclick="hidePaymentModal()" class="text-gray-500 hover:text-white transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <p class="text-gray-300 mb-6 leading-relaxed">
+                Hi! I love working on the SMCA Hub and many other platforms, main aim is to enhance user experience, streamline processes and save time. Every bit of support helps fund my passion for coding and building new features.
+                
+            </p>
+            
+            <!-- UPDATED TEXT HERE -->
+            <p class="text-lg font-semibold text-white mb-2">
+                Every contribution is appreciated! You can send any amount, even just **$1 AUD**, directly using **PayID** (available on all major Australian banks):
+            </p>
+
+            <!-- PAYID DISPLAY -->
+            <div class="flex justify-between items-center bg-gray-900 rounded-lg p-4 mb-6 border border-yellow-400/50">
+                <!-- IMPORTANT: Replace this placeholder PayID with your registered phone number or email linked to your NAB account. -->
+                <code id="upiIdDisplay" class="text-yellow-400 text-xl font-mono truncate">raviadabala77@gmail.com</code>
+                <button onclick="copyUpiId()" id="copyButton" class="ml-4 px-3 py-1 bg-yellow-400 text-gray-900 rounded-full text-sm font-bold hover:bg-yellow-500 transition duration-200">
+                    Copy
+                </button>
+            </div>
+            
+            <p id="copyMessage" class="text-sm text-center text-green-400 font-medium hidden mb-4">
+                PayID copied to clipboard!
+            </p>
+
+            <p class="text-sm text-gray-500 text-center mt-4">
+                (Please replace `ravi.dev@email.com` with your actual PayID)
+            </p>
+
+            <div class="mt-6 text-center">
+                <button onclick="hidePaymentModal()" class="px-6 py-2 text-md font-semibold rounded-full bg-blue-600 hover:bg-blue-700 transition">
+                    Close
+                </button>
+            </div>
 
         </div>
-    </main>
+    </div>
+    
+    <script>
+        // --- Modal Functionality ---
+
+        /**
+         * Shows the custom payment modal.
+         */
+        function showPaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.classList.add('modal-active');
+            // Reset copy message and button
+            document.getElementById('copyMessage').classList.add('hidden');
+            const copyButton = document.getElementById('copyButton');
+            copyButton.textContent = 'Copy';
+            copyButton.classList.remove('bg-green-600', 'text-white');
+            copyButton.classList.add('bg-yellow-400', 'text-gray-900');
+        }
+
+        /**
+         * Hides the custom payment modal.
+         */
+        function hidePaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            modal.classList.remove('modal-active');
+            modal.classList.add('invisible', 'opacity-0');
+        }
+
+        /**
+         * Copies the PayID to the clipboard.
+         */
+        function copyUpiId() {
+            const payId = document.getElementById('upiIdDisplay').textContent;
+            const copyButton = document.getElementById('copyButton');
+            const copyMessage = document.getElementById('copyMessage');
+            
+            // Use document.execCommand('copy') as navigator.clipboard might fail in an iframe
+            const textarea = document.createElement('textarea');
+            textarea.value = payId;
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                
+                // Visual feedback update
+                copyButton.textContent = 'Copied!';
+                copyButton.classList.remove('bg-yellow-400', 'text-gray-900');
+                copyButton.classList.add('bg-green-600', 'text-white');
+                // Update message text for PayID
+                copyMessage.textContent = 'PayID copied to clipboard!';
+                copyMessage.classList.remove('hidden');
+
+                // Revert button text after 3 seconds
+                setTimeout(() => {
+                    copyButton.textContent = 'Copy';
+                    copyButton.classList.remove('bg-green-600', 'text-white');
+                    copyButton.classList.add('bg-yellow-400', 'text-gray-900');
+                    copyMessage.classList.add('hidden');
+                }, 3000);
+
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                copyButton.textContent = 'Error';
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        // --- Keyboard Accessibility for Modal ---
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('paymentModal');
+            if (e.key === 'Escape' && modal.classList.contains('modal-active')) {
+                hidePaymentModal();
+            }
+        });
+    </script>
 
 </body>
 </html>
